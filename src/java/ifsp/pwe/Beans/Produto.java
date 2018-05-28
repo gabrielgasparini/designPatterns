@@ -12,7 +12,9 @@ package ifsp.pwe.Beans;
 public class Produto {
     private Integer id;
     private String  nome;
-    private String  categoria;
+    private String  descricao;
     private float   valor;
+    
+    
 }
 
