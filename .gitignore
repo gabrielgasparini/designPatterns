@@ -6,6 +6,8 @@ target/
 
 ### NetBeans ###
 nbproject/private/
+nbproject/project.properties
+nbproject/ant-deploy.xml
 build/
 nbbuild/
 dist/
