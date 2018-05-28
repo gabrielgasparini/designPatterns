@@ -1,5 +1,7 @@
 package ifsp.pwe.Beans;
 
+import ifsp.pwe.Dao.UsuarioDao;
+
 public class Usuario {
     private Integer id;
     private String nome;
@@ -7,7 +9,12 @@ public class Usuario {
     private String senha;
 
     public boolean entrar(String email, String senha){
-        return true;
+        Usuario usuario = new UsuarioDao().entrar(email, senha);
+        if(usuario != null){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void setId(Integer id) {
