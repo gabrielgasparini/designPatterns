@@ -4,25 +4,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Loja do Anselmo - Slice Fruits</title>
+        <title>Loja do Anselmo - Slice Fruits - Administração</title>
         <link rel="StyleSheet" type="text/css" href="CSS/style.css" media="screen" ></link> 
     </h:head>
 
     <h:body>
-        <h1 class="titulo-geral">Bem-Vindo</h1>
+        <div class="menu-administracao">
+            <div class="menu-item">Cadastrar Produtos</div>
+            <div class="menu-item">Gerenciar Conta</div>
+            <div class="menu-item">Logout</div>
+        </div>
+        <h1 class="titulo-geral">Administração</h1>
         <span class="subtitulo-geral">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-        <h:form>
-            <fieldset class="caixa-login">
-                <legend class="titulo-formularios">Faça o Login</legend>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="E-mail:" for="email" />
-                            <h:inputText id="email" value="#{usuarioManagedBean.email}"/>
-                        <h:outputLabel value="Senha:" for="senha" />
-                            <h:inputText id="senha" value="#{usuarioManagedBean.senha}"/>
-                            <h:commandButton class="botao-primario" value="Entrar" action="#{usuarioManagedBean.login}"/>
-                    </h:panelGrid>
-            </fieldset>
-        </h:form>
+         
     </h:body>
         
 </html>
