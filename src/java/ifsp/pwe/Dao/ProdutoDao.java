@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ifsp.pwe.Dao;
 
 import ifsp.pwe.Beans.Produto;
 import ifsp.pwe.Beans.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author felipe
- */
 public class ProdutoDao extends ConnectionFactory{
     /**
      * Busca produtos de um usuario
@@ -62,5 +55,24 @@ public class ProdutoDao extends ConnectionFactory{
             throw new RuntimeException(e);
         }
         
+    }
+    
+    public Produto cadastrar(Produto produto){
+        try{
+            String sql = "INSERT INTO produto (nome, descricao, valor, id_usuario) VALUES(?,?,?,?)";
+            PreparedStatement stmt = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString (1, produto.getNome());
+            stmt.setString (2, produto.getDescricao());
+            stmt.setFloat (3, produto.getValor());
+            stmt.setInt (4, produto.getUsuario().getId());
+            
+            stmt.execute();
+            stmt.close();
+            this.connection.close();
+
+            return produto;
+        }catch(SQLException ex){
+            throw new RuntimeException(ex);
+        }
     }
 }

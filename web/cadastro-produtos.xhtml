@@ -21,15 +21,14 @@
                 <legend class="titulo-formularios"></legend>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Nome:" for="nome" />
-                            <p:inputText  id="nome"/>
+                            <p:inputText  id="nome" value="#{produtoManagedBean.nome}"/>
                         <p:outputLabel value="Descrição:" for="descricao" />
-                            <p:inputText id="descricao"/>
-                        <p:outputLabel value="Valor:" for="valor" />
-                            <p:inputText id="valor"/>
-                            <p:commandButton class="botao-primario" value="Cadastrar" />
+                            <p:inputText id="descricao" value="#{produtoManagedBean.descricao}"/>
+                        <p:outputLabel value="Valor:" for="valor"/>
+                            <p:inputText id="valor" value="#{produtoManagedBean.valor}" />
+                            <p:commandButton class="botao-primario" value="Cadastrar" action="#{produtoManagedBean.cadastrar}"/>
                     </h:panelGrid>
             </fieldset>
-        </h:form> 
+        </h:form>
     </h:body>
-        
 </html>
