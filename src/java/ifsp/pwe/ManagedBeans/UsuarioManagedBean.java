@@ -1,23 +1,31 @@
 package ifsp.pwe.ManagedBeans;
 
 import ifsp.pwe.Beans.Usuario;
+import java.io.IOException;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class UsuarioManagedBean {
     private String email;
     private String senha;
     
-    public void login(){
+    public void login() throws IOException{
         Usuario usuario = new Usuario();
         
         Boolean result =  usuario.entrar(this.email, this.senha);
         
         if(result){
-            System.out.println("Logou!");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
         }else{
-            System.out.println("Não logou!");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
         }
+    }
+    
+    public void logout() throws IOException{
+        
+        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        
     }
     
     public String getEmail() {
