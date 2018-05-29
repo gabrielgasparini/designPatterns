@@ -18,7 +18,7 @@
                         <p:outputLabel value="E-mail:" for="email" />
                             <p:inputText id="email" value="#{usuarioManagedBean.email}"/>
                         <p:outputLabel value="Senha:" for="senha" />
-                            <p:inputText id="senha" value="#{usuarioManagedBean.senha}"/>
+                            <p:password id="senha" value="#{usuarioManagedBean.senha}"/>
                             <p:commandButton class="botao-primario" value="Entrar" action="#{usuarioManagedBean.login}"/>
                     </h:panelGrid>
             </fieldset>
