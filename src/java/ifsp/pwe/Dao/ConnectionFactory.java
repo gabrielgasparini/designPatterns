@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public abstract class ConnectionFactory {
     private String serverName = "localhost";
-    private String mydatabase = "loja";
+    private String mydatabase = "gerenciador_produto";
     private String url = "jdbc:mysql://" + this.serverName + "/" + this.mydatabase;
     private String username = "root";
     private String password = "gu1662325";
