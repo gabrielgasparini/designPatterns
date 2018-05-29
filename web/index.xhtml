@@ -15,11 +15,11 @@
         <h:form>
             <fieldset class="caixa-login">
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="E-mail:" for="email" />
-                            <h:inputText id="email" value="#{usuarioManagedBean.email}"/>
-                        <h:outputLabel value="Senha:" for="senha" />
-                            <h:inputText id="senha" value="#{usuarioManagedBean.senha}"/>
-                            <h:commandButton class="botao-primario" value="Entrar" action="#{usuarioManagedBean.login}"/>
+                        <p:outputLabel value="E-mail:" for="email" />
+                            <p:inputText id="email" value="#{usuarioManagedBean.email}"/>
+                        <p:outputLabel value="Senha:" for="senha" />
+                            <p:inputText id="senha" value="#{usuarioManagedBean.senha}"/>
+                            <p:commandButton class="botao-primario" value="Entrar" action="#{usuarioManagedBean.login}"/>
                     </h:panelGrid>
             </fieldset>
         </h:form>
