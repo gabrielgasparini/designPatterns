@@ -1,11 +1,11 @@
 package ifsp.pwe.ManagedBeans;
 
 import ifsp.pwe.Beans.Usuario;
+import ifsp.pwe.Dao.UsuarioDao;
 import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.SessionScoped;
-import javax.servlet.http.HttpSession;
 
 @ManagedBean
 @SessionScoped
@@ -13,10 +13,8 @@ public class UsuarioManagedBean {
     private String email;
     private String senha;
     
-    public void login() throws IOException{
-        Usuario usuario = new Usuario();
-        
-        Usuario usuarioRetorno =  usuario.entrar(this.email, this.senha);
+    public void login() throws IOException{      
+        Usuario usuarioRetorno = new UsuarioDao().buscar(this.email, this.senha);
         
         if(usuarioRetorno == null){
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");

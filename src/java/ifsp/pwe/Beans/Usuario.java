@@ -1,22 +1,10 @@
 package ifsp.pwe.Beans;
 
-import ifsp.pwe.Dao.UsuarioDao;
-
 public class Usuario {
     private Integer id;
     private String nome;
     private String email;
     private String senha;
-
-    public Usuario entrar(String email, String senha){
-        Usuario usuario = new UsuarioDao().buscar(email, senha);
-        
-        if(usuario != null){
-            return usuario;
-        }else{
-            return null;
-        }
-    }
 
     public void setId(Integer id) {
         this.id = id;
