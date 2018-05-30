@@ -37,5 +37,7 @@ public class Usuario {
         this.senha = senha;
     }
     
-    
+    public Integer getId(){
+        return this.id;
+    }
 }
