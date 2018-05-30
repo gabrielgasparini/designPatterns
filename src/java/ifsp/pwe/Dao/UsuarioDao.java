@@ -28,7 +28,7 @@ public class UsuarioDao extends ConnectionFactory{
             rs.close();
             stmt.close();
             this.connection.close();
-
+            
             return usuario;
         }catch(SQLException ex){
             throw new RuntimeException(ex);

@@ -4,8 +4,11 @@ import ifsp.pwe.Beans.Usuario;
 import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.faces.bean.SessionScoped;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean
+@SessionScoped
 public class UsuarioManagedBean {
     private String email;
     private String senha;
@@ -13,16 +16,26 @@ public class UsuarioManagedBean {
     public void login() throws IOException{
         Usuario usuario = new Usuario();
         
-        Boolean result =  usuario.entrar(this.email, this.senha);
+        Usuario usuarioRetorno =  usuario.entrar(this.email, this.senha);
         
-        if(result){
-            FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
-        }else{
+        if(usuarioRetorno == null){
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        }else{
+            //Criação da Sessão    
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put("usuario_logado", usuarioRetorno);
+            
+            FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
         }
     }
     
     public void logout() throws IOException{
+     
+        //Resgatando Sessão  
+        /*FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+        
+        session.getAttribute("usuario_logado");*/
         
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
         

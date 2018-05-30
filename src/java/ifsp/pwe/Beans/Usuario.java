@@ -8,12 +8,12 @@ public class Usuario {
     private String email;
     private String senha;
 
-    public boolean entrar(String email, String senha){
+    public Usuario entrar(String email, String senha){
         Usuario usuario = new UsuarioDao().entrar(email, senha);
         if(usuario != null){
-            return true;
+            return usuario;
         }else{
-            return false;
+            return null;
         }
     }
 
@@ -27,6 +27,10 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setSenha(String senha) {
