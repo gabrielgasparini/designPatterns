@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UsuarioDao extends ConnectionFactory{
-    public Usuario entrar(String email, String senha){
+    public Usuario buscar(String email, String senha){
         if(email == null || senha == null){
             return null;
         }

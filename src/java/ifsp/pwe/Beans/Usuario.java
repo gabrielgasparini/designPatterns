@@ -9,7 +9,7 @@ public class Usuario {
     private String senha;
 
     public boolean entrar(String email, String senha){
-        Usuario usuario = new UsuarioDao().entrar(email, senha);
+        Usuario usuario = new UsuarioDao().buscar(email, senha);
         if(usuario != null){
             return true;
         }else{

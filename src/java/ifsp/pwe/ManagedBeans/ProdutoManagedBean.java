@@ -4,6 +4,7 @@ import ifsp.pwe.Beans.Produto;
 import ifsp.pwe.Beans.Usuario;
 import ifsp.pwe.Dao.ProdutoDao;
 import java.io.IOException;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
@@ -12,6 +13,12 @@ public class ProdutoManagedBean {
     private String nome;
     private String descricao;
     private float valor;
+    
+    public List<Produto> buscar(){
+        List<Produto> lista = new ProdutoDao().busca(1);
+
+        return lista;
+    }
     
     public void cadastrar() throws IOException{
         Produto produto = new Produto();

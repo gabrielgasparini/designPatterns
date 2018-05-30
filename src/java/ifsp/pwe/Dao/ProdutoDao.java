@@ -19,35 +19,36 @@ public class ProdutoDao extends ConnectionFactory{
         List<Produto> lista = new ArrayList<Produto>();
        
         try {
-            String query = "SELECT * FROM produto where id =" + id;
+            String query = "SELECT * FROM produto WHERE id_usuario = " + id;
             PreparedStatement stmt = this.connection.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
-            if(rs == null) 
+            if(rs == null){
                 return null;
-            else{
-                Produto produto = new Produto();
-                Usuario usuario = new Usuario();
+            }else{
                 while(rs.next()){
+                    Produto produto = new Produto();
+                    Usuario usuario = new Usuario();
+                
                     produto.setId           (rs.getInt("id"));
                     produto.setNome         (rs.getString("nome"));
                     produto.setDescricao    (rs.getString("descricao"));
                     produto.setValor        (rs.getFloat("valor"));     
 
-                    String queryUsuario             = "SELECT * FROM produto where id =" + id;
+                    String queryUsuario             = "SELECT * FROM usuario where id =" + id;
                     PreparedStatement stmtUsuario   = this.connection.prepareStatement(queryUsuario);
                     ResultSet rsUsuario = stmtUsuario.executeQuery();
                     while(rsUsuario.next()){
                         usuario.setId       (rsUsuario.getInt("id"));
                         usuario.setNome     (rsUsuario.getString("nome"));
                         usuario.setEmail    (rsUsuario.getString("email"));
-                        usuario.setSenha    (rs.getString("senha"));
+                        usuario.setSenha    (rsUsuario.getString("senha"));
                     }
 
                     produto.setUsuario(usuario);
 
                     lista.add(produto);
-                    
                 }
+
                 return lista;
             }
             

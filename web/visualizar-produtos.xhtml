@@ -3,7 +3,8 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Loja do Anselmo - Slice Fruits - Administração - Visualizar Produtos</title>
         <link rel="StyleSheet" type="text/css" href="CSS/style.css" media="screen" ></link> 
@@ -18,10 +19,12 @@
         <h1 class="titulo-geral">Administração - Visualizar Produtos</h1>
         
         <div class="item-list-segura">
-            <div class="item-list">Jarro de Porcelana - 220,00 - Muito lindo</div>
-            <div class="item-list">Jarro de Porcelana - 220,00 - Muito lindo</div>
+            <ui:repeat var="produto" value="#{produtoManagedBean.buscar()}">
+                <h:outputText class="item-list" value="#{produto.id}" />
+                <h:outputText class="item-list" value="#{produto.nome}" />
+                <h:outputText class="item-list" value="#{produto.valor}" />
+            </ui:repeat>
         </div>
-     
-    </h:body>
-        
+
+    </h:body> 
 </html>
