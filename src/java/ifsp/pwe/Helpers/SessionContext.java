@@ -16,7 +16,7 @@ public class SessionContext {
     }
       
     private SessionContext(){
-         
+
     }
       
     private ExternalContext currentExternalContext(){
@@ -27,15 +27,14 @@ public class SessionContext {
         }
     }
       
-      
     public void encerrarSessao(){
         currentExternalContext().invalidateSession();
     }
-      
+
     public Object getAttribute(String nome){
         return currentExternalContext().getSessionMap().get(nome);
     }
-      
+
     public void setAttribute(String nome, Object valor){
         currentExternalContext().getSessionMap().put(nome, valor);
     }

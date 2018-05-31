@@ -15,7 +15,7 @@ public class ProdutoDao extends ConnectionFactory{
      * @param id identificador do usuario
      * @return lita de produtos do usuario
      */
-    public List<Produto> busca(Integer id){
+    public List<Produto> buscar(Integer id){
         List<Produto> lista = new ArrayList<Produto>();
        
         try {

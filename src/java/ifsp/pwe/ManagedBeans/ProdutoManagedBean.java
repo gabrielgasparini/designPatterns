@@ -15,7 +15,7 @@ public class ProdutoManagedBean {
     private float valor;
     
     public List<Produto> buscar(){
-        List<Produto> lista = new ProdutoDao().busca(1);
+        List<Produto> lista = new ProdutoDao().buscar(1);
 
         return lista;
     }
