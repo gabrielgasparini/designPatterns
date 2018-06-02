@@ -23,9 +23,10 @@
         <h1 class="titulo-geral">Administração - Visualizar Produtos</h1>
         
         <div class="item-list-segura">
-            <ui:repeat var="produto" value="#{produtoManagedBean.buscar()}">
+            <ui:repeat var="produto" value="#{usuarioManagedBean.buscarProduto()}">
                 <h:outputText class="item-list" value="#{produto.id}" />
                 <h:outputText class="item-list" value="#{produto.nome}" />
+                <h:outputText class="item-list" value="#{produto.descricao}" />
                 <h:outputText class="item-list" value="#{produto.valor}" />
             </ui:repeat>
         </div>

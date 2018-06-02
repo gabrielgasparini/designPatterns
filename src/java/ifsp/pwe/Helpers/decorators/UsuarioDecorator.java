@@ -1,29 +1,26 @@
-package ifsp.pwe.Beans;
+package ifsp.pwe.Helpers.decorators;
 
+import ifsp.pwe.Beans.Usuario;
 import ifsp.pwe.Dao.UsuarioDao;
-import ifsp.pwe.Helpers.decorators.IUsuario;
 import ifsp.pwe.Helpers.SessionContext;
 import java.io.IOException;
 import javax.faces.context.FacesContext;
 
-public class Usuario implements IUsuario{
+public abstract class UsuarioDecorator implements IUsuario{
     private Integer id;
     private String nome;
     private String email;
     private String senha;
 
-    /**
-     *  FAÇADE
-     *  Efetua login no sistema.
-     *  Implementa o design pattern 'façace', pois chama uma funcionalidade de
-     * busca de dados no banco de dados e chama outra funcionalidade que cria 
-     * uma sessão para o usuário no sistema.
-     * 
-     * @throws IOException Exceção gerada para tratamento do erro no redirecionamento.
-     */
+    protected IUsuario usuario;
+    
+    public UsuarioDecorator(IUsuario usuario){
+        this.usuario = usuario;
+    }
+
     @Override
-    public void login() throws IOException{      
-        Usuario usuarioRetorno = new UsuarioDao().buscar(this.email, this.senha);
+    public void login() throws IOException{
+         Usuario usuarioRetorno = new UsuarioDao().buscar(this.email, this.senha);
         
         if(usuarioRetorno == null){
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
@@ -35,6 +32,8 @@ public class Usuario implements IUsuario{
             FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
         }
     }
+    
+    public abstract void logout() throws IOException;
     
     @Override
     public void setId(Integer id) {
