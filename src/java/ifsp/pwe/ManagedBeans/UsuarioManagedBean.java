@@ -1,38 +1,34 @@
 package ifsp.pwe.ManagedBeans;
 
 import ifsp.pwe.Beans.Usuario;
-import ifsp.pwe.Dao.UsuarioDao;
-import ifsp.pwe.Helpers.SessionContext;
 import java.io.IOException;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class UsuarioManagedBean {
     private String email;
     private String senha;
     
-    public void login() throws IOException{      
-        Usuario usuarioRetorno = new UsuarioDao().buscar(this.email, this.senha);
-        
-        if(usuarioRetorno == null){
-            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-        }else{
-            //Criação da Sessão
-            SessionContext sessao = SessionContext.getInstance();
-            sessao.setAttribute("usuario_logado", usuarioRetorno);
+    public void entrar(){      
+        Usuario usuario = new Usuario();
+        usuario.setEmail(this.email);
+        usuario.setSenha(this.senha);
 
-            FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
+        try{
+            usuario.login();
+        }catch(IOException ex){
+            throw new RuntimeException("Erro no redirecionamento do login.");
         }
     }
     
-    public void logout() throws IOException{
-        //Resgatando Sessão
-        SessionContext sessao = SessionContext.getInstance();
-        sessao.encerrarSessao();
+    public void sair(){
+        Usuario usuario = new Usuario();
         
-        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-        
+        try{
+            usuario.logout();
+        }catch(IOException ex){
+            throw new RuntimeException("Erro no redirecionamento do logout.");
+        }
     }
     
     public String getEmail() {
