@@ -20,7 +20,7 @@
         </h:form>
         
         <h1 class="titulo-geral">Administração - Cadastro de Produtos</h1>
-        <h:form class="form-geral">
+        <h:form class="form-geral" id="form-geral">
             <fieldset class="caixa-login">
                 <legend class="titulo-formularios"></legend>
                     <h:panelGrid columns="2">
@@ -30,9 +30,11 @@
                             <p:inputText id="descricao" value="#{usuarioManagedBean.produto.descricao}"/>
                         <p:outputLabel value="Valor:" for="valor"/>
                             <p:inputText id="valor" value="#{usuarioManagedBean.produto.valor}" />
-                            <p:commandButton class="botao-primario" value="Cadastrar" action="#{usuarioManagedBean.cadastrarProduto}"/>
+                            <p:commandButton class="botao-primario" value="Cadastrar" ajax="false"  action="#{usuarioManagedBean.cadastrarProduto}"/>
                     </h:panelGrid>
+                    <p:messages id="retornomensagem" />
             </fieldset>
         </h:form>
+        
     </h:body>
 </html>

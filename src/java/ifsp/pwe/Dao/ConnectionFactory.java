@@ -9,7 +9,7 @@ public abstract class ConnectionFactory {
     private String mydatabase = "gerenciador_produto";
     private String url = "jdbc:mysql://" + this.serverName + "/" + this.mydatabase;
     private String username = "root";
-    private String password = "gu1662325";
+    private String password = "";
     
     protected Connection connection;
 

@@ -68,6 +68,7 @@ body{
     height: auto;
     box-sizing: border-box;
     padding: 20px;
+    display: inline-block;
 }
 
 .item-list{
@@ -77,4 +78,27 @@ body{
     width: 100%;
     font-family: arial;
     font-size: 18px;
+}
+
+.item-list.id{
+    font-weight: bold;
+}
+
+.item-list i{
+    margin-right: 5px;
+}
+
+.item-list-repeat{
+    text-align: left;
+    float: left;
+    width: 23.3%;
+    height: 170px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding: 25px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }

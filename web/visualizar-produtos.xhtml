@@ -8,6 +8,7 @@
     <h:head>
         <title>Loja do Anselmo - Slice Fruits - Administração - Visualizar Produtos</title>
         <link rel="StyleSheet" type="text/css" href="CSS/style.css" media="screen" ></link> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"></link>
     </h:head>
 
     <h:body>
@@ -24,10 +25,12 @@
         
         <div class="item-list-segura">
             <ui:repeat var="produto" value="#{usuarioManagedBean.buscarProduto()}">
-                <h:outputText class="item-list" value="#{produto.id}" />
-                <h:outputText class="item-list" value="#{produto.nome}" />
-                <h:outputText class="item-list" value="#{produto.descricao}" />
-                <h:outputText class="item-list" value="#{produto.valor}" />
+                <div class="item-list-repeat">
+                    <div class="item-list id"><h:outputText value="#{produto.id}" /></div>
+                    <div class="item-list"><i class="fa fa-align-center"></i><h:outputText value="#{produto.nome}" /></div>
+                    <div class="item-list"><i class="fa fa-align-center"></i><h:outputText value="#{produto.descricao}" /></div>
+                    <div class="item-list"><i class="fa fa-money"></i><h:outputText value="#{produto.valor}" /></div>
+                </div>
             </ui:repeat>
         </div>
 

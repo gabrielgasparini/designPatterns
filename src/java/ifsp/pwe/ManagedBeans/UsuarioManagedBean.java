@@ -6,7 +6,9 @@ import ifsp.pwe.Helpers.decorators.IUsuario;
 import ifsp.pwe.Helpers.decorators.Logado;
 import java.io.IOException;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class UsuarioManagedBean {
@@ -73,6 +75,7 @@ public class UsuarioManagedBean {
 
         try{
             usuarioLogado.cadastrarProduto(this.produto);
+            FacesContext.getCurrentInstance().addMessage("form-geral:retornomensagem", new FacesMessage(FacesMessage.SEVERITY_INFO,"Produto cadastrado com sucesso!", "Não foi possível cadastrar o produto!"));  
         }catch(IOException ex){
             throw new RuntimeException("Erro ao cadastrar produto.");
         }
